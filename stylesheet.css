@@ -4,22 +4,26 @@
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
+
 body {
   color: #ededed;
   background: #081b29;
+  font-size: 16px;
 }
+
 .header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 20px 10%;
+  padding: 20px 5%;
   background: #051129;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 100;
 }
+
 .logo {
   position: relative;
   font-size: 25px;
@@ -28,37 +32,51 @@ body {
   letter-spacing: 1px;
   font-weight: 600;
   cursor: default;
-  opacity: 0;
-  animation: slideRight 1s ease forwards;
+  opacity: 1;
 }
+
+.navbar {
+  display: flex;
+  gap: 35px;
+}
+
 .navbar a {
   display: inline-block;
-  font-size: 25px;
+  font-size: 18px;
   color: #fff;
   text-decoration: none;
   font-weight: 500;
-  margin-left: 35px;
   transition: 0.3s;
-  opacity: 0;
-  /* opacity: 1; */
-  animation: slideTop 0.5s ease forwards;
-  animation-delay: calc(0.2s * var(--i));
+  opacity: 1;
 }
+
 .navbar a:hover {
   color: #0ef;
-  /* animation: glow 1s ease-in-out infinite alternate; */
+  animation: glow 1s ease-in-out infinite alternate;
 }
-@keyframes glow {
-  from {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073,
-      0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    top: 60px;
+    left: -100%;
+    background-color: #051129;
+    width: 100%;
+    transition: left 0.3s;
   }
 
-  to {
-    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6,
-      0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  .navbar.active {
+    left: 0;
+  }
+
+  .navbar a {
+    padding: 10px;
   }
 }
+/* ==================================================================================================== */
 .home {
   position: relative;
   width: 100%;
@@ -69,7 +87,7 @@ body {
   background-position: center;
   display: flex;
   align-items: center;
-  padding: 70px 10% 0;
+  padding: 70px 10% 0; /* Reduce padding for smaller screens */
 }
 .home-content {
   max-width: 800px;
@@ -181,6 +199,103 @@ body {
   line-height: 1.4;
   margin-bottom: 4rem;
 }
+@media (max-width: 768px) {
+  /* Global styles (no change) */
+
+  /* Home Section */
+  .home {
+    position: relative;
+    width: 100%;
+    height: auto; /* Remove fixed height for responsiveness */
+    background: url(assets/android_honeycomb.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column; /* Change to a single column layout for small screens */
+    align-items: center; /* Center-align content */
+    padding: 70px 5% 20px; /* Adjust padding for smaller screens */
+  }
+
+  .home-content {
+    margin: 15% 0;
+    max-width: 100%; /* Full width for small screens */
+    text-align: center; /* Center-align text */
+  }
+
+  .home-content h3 {
+    font-size: 28px; /* Adjusted font size for smaller screens */
+    font-weight: 700;
+    opacity: 1; /* Remove animation for small screens */
+    margin-bottom: 20px; /* Add spacing */
+  }
+
+  .home-content h3:nth-of-type(2) {
+    margin-bottom: 20px;
+    opacity: 1; /* Remove animation for small screens */
+  }
+
+  .home-content h3 span {
+    color: #0ef;
+  }
+
+  .home-content h1 {
+    font-size: 42px; /* Adjusted font size for smaller screens */
+    font-weight: 700;
+    margin: -3px 0;
+    opacity: 1; /* Remove animation for small screens */
+  }
+
+  .home-content p {
+    font-size: 16px; /* Adjusted font size for smaller screens */
+    opacity: 1; /* Remove animation for small screens */
+    line-height: 1.6; /* Improved readability */
+  }
+
+  .home-sci {
+    display: flex;
+    flex-wrap: wrap; /* Wrap the social icons for smaller screens */
+    justify-content: center; /* Center-align social icons */
+  }
+
+  .home-sci a {
+    width: 30px; /* Adjusted width for smaller screens */
+    height: 30px; /* Adjusted height for smaller screens */
+    font-size: 16px; /* Adjusted font size for smaller screens */
+    margin: 10px; /* Adjusted margin for smaller screens */
+  }
+
+  /* About Section */
+  .about {
+    display: flex;
+    flex-direction: column; /* Change to a single column layout for small screens */
+    align-items: center; /* Center-align content */
+    padding: 5%;
+  }
+
+  .about-img {
+    margin-bottom: 20px;
+  }
+
+  .about-text h2 {
+    font-size: 36px; /* Adjusted font size for smaller screens */
+  }
+
+  .about-text h2 span {
+    color: #0ef;
+  }
+
+  .about-text h4 {
+    font-size: 24px; /* Adjusted font size for smaller screens */
+    font-weight: 600;
+    margin: 15px 0;
+  }
+
+  .about-text p {
+    font-size: 16px; /* Adjusted font size for smaller screens */
+    margin-bottom: 2rem; /* Adjusted margin for smaller screens */
+  }
+}
+/* =========================================================================================== */
 #services {
   color: aliceblue;
   font-size: 20px;
@@ -273,7 +388,6 @@ section {
   width: 600px;
   height: 500px;
   padding: 75px 90px;
-  margin-left: 120px;
 }
 
 .heading1 {
@@ -535,6 +649,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 .row {
